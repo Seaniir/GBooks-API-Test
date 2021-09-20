@@ -1,9 +1,12 @@
 $(document).ready(function () 
 {
-
+    var arrayDiv = new Array();
 
     $("#test").click(function () 
     {
+        for (var i = 0; i < arrayDiv.length; i++) {
+            $('.bookCards').remove();
+          }
         $('#result').empty();
 
         var search = $("#books").val();
@@ -35,7 +38,7 @@ $(document).ready(function ()
                     {
                         title = $('<h5 class = "center-align black-text">' + data.items[i].volumeInfo.title + '</h5>');
                         author = $('<h5 class = "center-align black-text">' + data.items[i].volumeInfo.authors + '</h5>');
-                        img = $('<img class = "aligning card z-depth-5" id = "dynamic"><br><a href =' + data.items[i].volumeInfo.infoLink + '><button id ="imagebutton" class="btn red aligning">Read More</button></a>');
+                        img = $('<img class = "aligning card z-depth-5" id = "dynamic"><br><a href =' + data.items[i].volumeInfo.infoLink + '><button id ="imagebutton" class="btn red aligning">INFO</button></a>');
                         if (data.items[i].volumeInfo.imageLinks === undefined) 
                         {
                             title = null;
@@ -45,11 +48,14 @@ $(document).ready(function ()
                         } 
                         else 
                         {
+                            arrayDiv[i] = document.createElement('div');
+                            arrayDiv[i].className = 'bookCards';
                             url = data.items[i].volumeInfo.imageLinks.thumbnail;
                             img.attr('src', url); //Attach the image url
-                            title.appendTo("#result");
-                            author.appendTo("#result");
-                            img.appendTo("#result");
+                            title.appendTo(arrayDiv[i]);
+                            author.appendTo(arrayDiv[i]);
+                            img.appendTo(arrayDiv[i]);
+                            document.body.append(arrayDiv[i]);
                         }
                     }
                 },
