@@ -2,7 +2,7 @@ $(document).ready(function ()
 {
     var arrayDiv = new Array();
 
-    $("#test").click(function () 
+    $("#books").keyup(function() 
     {
         for (var i = 0; i < arrayDiv.length; i++) {
             $('.bookCards').remove();
@@ -13,7 +13,6 @@ $(document).ready(function ()
 
         if (search == '') 
         {
-            alert("Please enter something in the field first");
         } 
         else 
         {
