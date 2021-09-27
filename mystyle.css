@@ -1,3 +1,7 @@
+body{
+    background-image: url("background.jpg");
+}
+
 #search{
     width: 300px;
     height: 110px;
@@ -41,6 +45,55 @@ button{
     margin-right: 150px;
 }
 
-body{
-    background-image: url("background.jpg");
+.userContainer{
+    display: flex;
+    position: absolute;
+    left: 72%;
+    top: 15px;
+    border-radius: 5px;
+    height: 150px;
+    width: 25%;
+    background-color: white;
+}
+
+.userDetails{
+    position: relative;
+    margin-top:15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.userDetails span{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.detailsImg{
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.detailsImg img{
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.detailsImg img:nth-child(1){
+    height: 30px;
+    margin-bottom: 16px;
+}
+
+.detailsImg img:nth-child(2){
+    height: 30px;
+    margin-bottom: 18px;
+}
+
+.userImg{
+    margin: auto;
+    margin-left: 65px;
+    height: 125px;
+    border-radius: 15px;
 }

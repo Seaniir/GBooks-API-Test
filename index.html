@@ -1,25 +1,78 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="mystyle.css" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Books Search Software</title>
+    <meta name="google-signin-client_id" content="616427647027-4qae6brl9pjqs9jbg4aftc5uf8qeobp5.apps.googleusercontent.com">
+  <body class="#212121 grey lighten-4">
+    <div class="g-signin2" data-onsuccess="onSignIn" data-prompt="select_account"></div>
+    <button onclick="signOut()">Sign out</button>
+    <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        var ID = profile.getEmail();
+        createCookie("gfg", ID, "10");
+        console.log('ID: ' + profile.getId());
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail());
+        //pass information to server to insert or update the user record
+        update_user_data(profile);
+      }
 
-<body class="#212121 grey lighten-4">
+      function createCookie(name, value, days) {
+    var expires;
+      
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    }
+    else {
+        expires = "";
+    }
+      
+    document.cookie = escape(name) + "=" + 
+        escape(value) + expires + "; path=/";
+}
 
+      function update_user_data(response) {
+        console.log(response);
+        $.ajax({
+          type: "POST",
+          dataType: 'json',
+          data: response,
+          url: 'check_user.php',
+          success: function(msg) {
+            if (msg.error == 1) {
+              alert('Something Went Wrong!');
+            } else {
+              window.location.href = "dashboard.php";
+            }
+          }
+        });
+      }
+
+      function signOut() {
+        gapi.auth2.getAuthInstance().signOut().then(function() {
+          console.log('user signed out')
+        })
+      }
+    </script>
     <div id="search" class="#f5f5f5 grey lighten-4 z-depth-5">
-        <form id="myform" action="#">
-            <div class="input-field">
-                <input type="search" id="books">
-                <label for="search"></label>
-            </div>
-        </form>
+      <form id="myform" action="#">
+        <div class="input-field">
+          <input type="search" id="books">
+          <label for="search"></label>
+        </div>
+        <button id='test' class="btn red">Search Books</button>
+      </form>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="myscript.js"></script>
-</body>
-</head>
-
+  </body>
+  </head>
 </html>
