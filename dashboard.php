@@ -40,16 +40,14 @@ while ($row = mysqli_fetch_array($query))
     }
   </script>
       <button onclick="signOut()">Sign out</button>
+      <button onclick="window.location.href = 'library.php';">Library</button>
 
   <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 <div id="search" class="#f5f5f5 grey lighten-4 z-depth-5">
-      <form id="myform" action="#">
         <div class="input-field">
           <input type="search" id="books">
-          <label for="search"></label>
         </div>
         <button id='test' class="btn red">Search Books</button>
-      </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>

@@ -1,0 +1,53 @@
+body{
+    background-color: white;
+}
+
+.flexatron{
+    margin-top: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+    color: black;
+}
+
+.booksCards{
+    color: white;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.4654236694677871) 35%, rgba(0,212,255,1) 100%);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 100px;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    width: calc(100% * (1/4) - 10px - 1px);
+}
+
+.booksCards span:nth-child(2){
+    margin-bottom: 20px;
+}
+
+.booksCards img{
+    border-radius: 15px;
+}
+
+@media screen and (max-device-width:400px) {
+    .booksCards{
+        width: calc(100% * (1/2) - 10px - 1px);
+    }
+
+    .booksCards span{
+        font-size: 50px;
+    }
+
+    .booksCards img{
+        width: 80%;
+    }
+}
+
+@media screen and (min-device-width:1900px) {
+    .booksCards{
+        width: calc(100% * (1/5) - 48px - 1px);
+    }
+}
